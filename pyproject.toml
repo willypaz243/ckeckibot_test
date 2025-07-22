@@ -1,0 +1,10 @@
+[project]
+name = "bot-service"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Willy Samuel Paz Colque", email = "willypaz243@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
