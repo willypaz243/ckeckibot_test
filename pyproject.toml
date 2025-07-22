@@ -7,4 +7,19 @@ authors = [
     { name = "Willy Samuel Paz Colque", email = "willypaz243@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "faiss-cpu>=1.11.0.post1",
+    "fastapi[all,standard]>=0.116.1",
+    "jq>=1.10.0",
+    "langchain>=0.3.26",
+    "langchain-community>=0.3.27",
+    "langchain-ollama>=0.3.5",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.0",
+    "ipywidgets>=8.1.7",
+    "pytest>=8.4.1",
+    "ruff>=0.12.4",
+]
