@@ -6,7 +6,7 @@ from src.routes.schemas import ChatMessage
 chatbot_router = APIRouter(prefix="/chatbot", tags=["Chatbot"])
 
 
-@chatbot_router.post("/")
+@chatbot_router.post("/chat")
 async def chat(query: ChatMessage, agent: NebiusAgentDep = Depends()) -> ChatMessage:
     response = await agent.query(query.content)
     return ChatMessage(content=response)
