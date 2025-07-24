@@ -1,6 +1,3 @@
-def main():
-    print("Hello from bot-service!")
+from src import init_app
 
-
-if __name__ == "__main__":
-    main()
+app = init_app()
