@@ -87,6 +87,6 @@ class VectorStoreManager:
         if not ids:
             return False
         try:
-            return vectorstore.adelete(ids)
+            return await vectorstore.adelete(ids)
         except Exception as _:
             return False
