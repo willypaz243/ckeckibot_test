@@ -10,3 +10,9 @@ wheels/
 .venv
 base_docs/
 faiss_index/
+vectorstore/
+notebooks/
+data/
+logs/
+outputs/
+.env
