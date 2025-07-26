@@ -27,7 +27,7 @@ class VectorStoreManager:
             [Document(page_content="")],
             self.emb_model,
         )
-        await vectorstore.adelete(vectorstore.index_to_docstore_id.values())
+        await vectorstore.adelete(list(vectorstore.index_to_docstore_id.values()))
         vectorstore.save_local(self.vectorstore_path)
         return vectorstore
 
@@ -49,13 +49,13 @@ class VectorStoreManager:
         async with aiofiles.open(file_path, "wb") as f:
             await f.write(document)
 
+        loader = None
         if file_name.endswith(".csv"):
-            print(os.path.exists(file_path))
             loader = CSVLoader(file_path)
         elif file_name.endswith(".json"):
             loader = JSONLoader(file_path, ".", text_content=False)
 
-        docs = await loader.aload()
+        docs = await loader.aload() if loader else None
         if not docs:
             raise ValueError("No documents found in the file.")
 
@@ -87,6 +87,6 @@ class VectorStoreManager:
         if not ids:
             return False
         try:
-            return await vectorstore.adelete(ids)
+            return bool(await vectorstore.adelete(ids))
         except Exception as _:
             return False

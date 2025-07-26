@@ -87,10 +87,10 @@ Reglas:
         """Realiza una consulta al modelo y retorna la respuesta completa."""
         messages = await self.build_messages(prompt)
         response = await self.model.ainvoke(messages)
-        return self._clean_response(response.content)
+        return self._clean_response(str(response.content))
 
     async def query_stream(self, prompt: str) -> AsyncIterator[str]:
         """Realiza una consulta al modelo y retorna un stream de tokens de respuesta."""
         messages = await self.build_messages(prompt)
         async for token in self.model.astream(messages):
-            yield token.content
+            yield str(token.content)
